@@ -13,6 +13,16 @@
 ### Em que consiste o projeto?
 > Em desenvolver uma pequena API CRUD (Criar,visualizar, Deletar e Atualizar ), ou seja, realizar as quatros operações básicas e principais, de interação de uma cliente à API REST.
 
+### Modelagem do Banco:
+> Modelagem de banco de dados é o processo de levantamento, análise, categorização e exploração de todos 
+> os dados e tipos de informações que irão sustentar uma aplicação. Esta é uma etapa primordial no
+> trabalho do desenvolvimento de sistemas, porque todo software é criado com determinados objetivos, 
+> para atender às necessidades dos usuários dentro deste cenário.
+- [Fonte de informação](https://esr.rnp.br/governanca-de-ti/o-que-e-a-modelagem-de-banco-de-dados-e-quais-os-seus-principais-conceitos/)
+
+### Diagrama modelo relacional do db em questão
+![CRUD NODE/EXPRESS](./MDR.png)
+
 ### Habilidades a serem adquiridas:
 > Entender o funcionamento da camada de Model;
 > Delegar responsabilidades específicas para essa camada;
