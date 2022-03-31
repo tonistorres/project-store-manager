@@ -8,5 +8,4 @@ const mysql = require('mysql2/promise');
    password: process.env.MYSQL_PASSWORD,
    port: process.env.MYSQL_PORT,
  });
- 
  module.exports = { connection };
