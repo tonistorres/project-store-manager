@@ -20,16 +20,8 @@ const getAllModelSales = async () => {
     WHERE sp.sale_id = ?
     ORDER BY s.id, sp.product_id
     `, [id]);
-// console.log(product[0]);
     return product;
   };
-
-async function main(){
-    getAllModelSales();
-    // getByIdModelSale(1)
-}
-
-main();
 
  module.exports = {
       getAllModelSales,
