@@ -10,6 +10,12 @@ const getByIdModelProduct = async (id) => {
     return product[0];
   };
 
+async function main() {
+ await getByIdModelProduct(4);
+}
+
+main();
+
   module.exports = {
     getAllModelProducts,
     getByIdModelProduct,

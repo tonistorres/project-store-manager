@@ -4,9 +4,9 @@ const { connection } = require("../../../models/mysql-connection");
 const UserModel = require("../../../models/data.product");
 
 
-describe("Users Model", () => {
+describe("", () => {
 
-describe('Qdo ENCONTRAR  registros no DB fn (getByIdModelProduct())', () => {
+describe('FUNÇÃO:getByIdModelProduct()--> Qdo ENCONTRAR  registros no DB ', () => {
 
 const returDBGOK = [{ id: 1, name: 'Martelo de Thor', quantity: 10 }]
 
