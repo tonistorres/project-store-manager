@@ -55,9 +55,27 @@ const updateServiceProduct = async (product) => {
   }
 };
 
+const deleteByIdServiceProduct = async (requisicao) => {
+  const { id } = requisicao;
+  const verificaExiste = await ProductModel.getByIdModelProduct(id);
+  if (verificaExiste) {
+    await ProductModel.deleteByIdModel(+id);
+    return {
+      erro: true,
+      status: 204,      
+    };
+  }
+  return {
+    erro: true,
+    status: 404,
+    message: 'Product not found',
+  };
+};
+
 module.exports = { 
   getAllServiceProducts,
   getByIdServiceProducts,
   createServiceProduct,
   updateServiceProduct,
+  deleteByIdServiceProduct,
    };
