@@ -10,13 +10,29 @@ const getByIdModelProduct = async (id) => {
     return product[0];
   };
 
-async function main() {
- await getByIdModelProduct(4);
-}
+const createModelProduct = async ({ name, quantity }) => {
+  const [{ insertId }] = await connection.execute(`INSERT INTO
+   products (name, quantity) VALUES (?, ?)`, [name, quantity]);
+    return {
+        id: insertId,
+        name,
+        quantity,  
+    };
+};
 
-main();
+const updateModelProduct = async ({ id, name, quantity }) => {
+  await connection.execute('UPDATE customers SET name = ?, quantity = ? WHERE id = ?',
+      [name, quantity, id]);
+  return {
+      id,
+      name,
+      quantity,
+  };
+};
 
   module.exports = {
     getAllModelProducts,
     getByIdModelProduct,
+    createModelProduct,
+    updateModelProduct,
   };

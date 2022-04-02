@@ -31,4 +31,18 @@ const getByIdControllerProduct = async (req, res) => {
     }
   };
 
-module.exports = { getAllControllerProducts, getByIdControllerProduct };
+const createProductController = async (req, res) => {
+  try {
+    const product = await ProductService.createServiceProduct(req.body);
+    return res.status(201).json(product);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Erro no Servidor' });
+  }
+};
+
+module.exports = { 
+  getAllControllerProducts,
+   getByIdControllerProduct,
+   createProductController,
+  };

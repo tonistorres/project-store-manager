@@ -18,6 +18,7 @@ describe("03-validations", () => {
 				});
 		});
 
+		// validado
 		it("quando cadastrar um produto será validado que o campo name possui 5 ou mais caracteres", async () => {
 			await frisby
 				.post(`${url}/products/`, {
@@ -33,6 +34,8 @@ describe("03-validations", () => {
 				}); 
 		});
 
+
+		// validado
 		it("quando cadastrar um produto será validado que o campo quantity está presente no body", async () => {
 			await frisby
 				.post(`${url}/products/`, {

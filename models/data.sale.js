@@ -26,4 +26,5 @@ const getAllModelSales = async () => {
  module.exports = {
       getAllModelSales,
       getByIdModelSale,
+
   };

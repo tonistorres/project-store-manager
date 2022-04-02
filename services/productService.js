@@ -18,7 +18,19 @@ const getByIdServiceProducts = async (requisicao) => {
    return { message: 'Product not found' };      
 };
 
+const createServiceProduct = async (product) => {
+  try {
+    const { name, quantity } = product;
+    const created = await ProductModel.createModelProduct({ name, quantity });
+    return created;
+  } catch (error) {
+    console.log(error);
+    return { error: 500, message: 'Erro no Servidor' };
+  }
+};
+
 module.exports = { 
   getAllServiceProducts,
   getByIdServiceProducts,
+  createServiceProduct,
    };
