@@ -16,15 +16,11 @@
 
 function validaQuantityComplement(req, res, next) {
   const { quantity } = req.body;
-  console.log('entrei no middleware');
-  console.log(quantity);
   if (!Number.isInteger(quantity)) {
-    console.log('dentro do if ');
       return res
       .status(422).json({ message: '"name" length must be at least 5 characters long' });
   }
   if (quantity < 1) {
-    console.log('dentro do if ');
       return res
       .status(422).json({ message: '"name" length must be at least 5 characters long' });
   }
