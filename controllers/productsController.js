@@ -1,18 +1,19 @@
 const ProductService = require('../services/productService');
 
+const ERRO_SERVIDOR = 'Erro no Servidor';
+
 const getAllControllerProducts = async (_req, res) => {
     try {
-      const users = await ProductService.getAllServiceProducts();
-      // console.log(users);
-      if (users.message) {
-        return res.status(404).json({ message: users.message });
+      const products = await ProductService.getAllServiceProducts();
+       if (products.message) {
+        return res.status(404).json({ message: products.message });
       }
-      return res.status(200).json(users);
+      return res.status(200).json(products);
     } catch (error) {
       console.log(error);
       return res
         .status(500)
-        .json({ message: 'Erro no Servidor' });
+        .json({ message: ERRO_SERVIDOR });
     }
   };
   
@@ -27,7 +28,7 @@ const getByIdControllerProduct = async (req, res) => {
       console.log(error);
       return res
         .status(500)
-        .json({ message: 'Erro no Servidor' });
+        .json({ message: ERRO_SERVIDOR });
     }
   };
 
@@ -40,7 +41,7 @@ const createProductController = async (req, res) => {
     return res.status(201).json(product);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: 'Erro no Servidor' });
+    return res.status(500).json({ message: ERRO_SERVIDOR });
   }
 };
 
@@ -55,13 +56,28 @@ const updateProductController = async (req, res) => {
     return res.status(200).json(product);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: 'Erro no Servidor' });
+    return res.status(500).json({ message: ERRO_SERVIDOR });
   }
 };
 
+const getDeleteIdControllerProduct = async (req, res) => {
+  try {
+    const product = await ProductService.deleteByIdServiceProduct(req.params);
+    if (product.erro && product.status === 204) {
+      return res.status(204).end();
+    }
+    return res.status(product.status).json({ message: product.message });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: ERRO_SERVIDOR });
+  }
+};
 module.exports = { 
   getAllControllerProducts,
   getByIdControllerProduct,
   createProductController,
   updateProductController,
+  getDeleteIdControllerProduct,
   };

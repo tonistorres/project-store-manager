@@ -58,13 +58,14 @@ const updateServiceProduct = async (product) => {
 const deleteByIdServiceProduct = async (requisicao) => {
   const { id } = requisicao;
   const verificaExiste = await ProductModel.getByIdModelProduct(id);
-  if (verificaExiste) {
-    await ProductModel.deleteByIdModel(+id);
+  if (verificaExiste) {    
+    await ProductModel.deletModelByIdProduct(+id);
     return {
       erro: true,
       status: 204,      
     };
   }
+  console.log('pasei direto');
   return {
     erro: true,
     status: 404,
