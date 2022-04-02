@@ -34,7 +34,25 @@ const getByIdControllerProduct = async (req, res) => {
 const createProductController = async (req, res) => {
   try {
     const product = await ProductService.createServiceProduct(req.body);
+    if (product.erro) {
+      return res.status(product.status).json({ message: product.message });  
+    }
     return res.status(201).json(product);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Erro no Servidor' });
+  }
+};
+
+const updateProductController = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await ProductService.updateServiceProduct({ ...req.body, id });
+    if (product.erro) {
+      console.log(product.status);
+      return res.status(product.status).json({ message: product.message });  
+    }
+    return res.status(200).json(product);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Erro no Servidor' });
@@ -43,6 +61,7 @@ const createProductController = async (req, res) => {
 
 module.exports = { 
   getAllControllerProducts,
-   getByIdControllerProduct,
-   createProductController,
+  getByIdControllerProduct,
+  createProductController,
+  updateProductController,
   };
