@@ -43,7 +43,7 @@ const updateServiceProduct = async (product) => {
     const exist = await ProductModel.getByIdModelProduct(id);
 
     if (!exist) {
-      return { erro: true, status: 422, message: 'Product not found' };
+      return { erro: true, status: 404, message: 'Product not found' };
     }
 
     const updated = await ProductModel.updateModelProduct({ id, name, quantity });
