@@ -1,8 +1,4 @@
-const { expect } = require("chai");
-const sinon = require("sinon");
-const SaletModel = require("../../../models/data.sale");
-const SaleService = require("../../../services/SaleService");
-
+c
 describe("", () => {
   describe("FUNÇÃO:getAllServiceSales()--> Qdo RETORNAR REGISTROS do DB", () => {
     const resultDBOK = [

@@ -18,41 +18,30 @@ const getByIdServiceSales = async (requisicao) => {
    return { message: 'Sale not found' };      
 };
 
-// const arrayObject = [
-//   { productId: 1, quantity: 2 },
-//   { productId: 2, quantity: 5 },
-// ];
-
-// const createServiceSale = async (arrayObject) => {
-//   try {
-// console.log(arrayObject);
-
-// const idvenda = await SaleModel.createModelSales();
-
-//   arrayObject.forEach(async ({ productId, quantity }) => {
-// // console.log(productId, quantity, idvenda.id);
-// await SaleModel.createModelSalesProducts(idvenda.id, productId, quantity);
-//   });
-
-//     // const objReturn = {
-//     //   id: getSaleId,
-//     //   itemsSold: arrayObject,
-//     // };
-//     // return { status: 201, message: objReturn };
-//   } catch (error) {
-//     console.log(error);
-//     return { error: 500, message: 'Erro no Servidor' };
-//   }
-// };
-
-// async function main(){
-//  await createServiceSale(arrayObject);
-// }
-
-// main();
+/** Criando um end-point pra requisição do tipo N:N */
+const createServiceSale = async (reqArrayObj) => {
+  try {
+const idvenda = await SaleModel.createModelSales();
+reqArrayObj.forEach(async (item) => {
+await SaleModel.createModelSalesProducts(
+  { id: idvenda.id, productId: item.productId, quantity: item.quantity },
+  );
+  });
+ 
+    const retornaObjetoFormato = {
+      id: idvenda.id,
+      itemsSold: reqArrayObj,
+    };
+    
+    return retornaObjetoFormato;
+  } catch (error) {
+    console.log(error);
+    return { error: 500, message: 'Erro no Servidor' };
+  }
+};
 
 module.exports = {
     getAllServiceSales,
     getByIdServiceSales,
-    // createServiceSale,
+    createServiceSale,
 };

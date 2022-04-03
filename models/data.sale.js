@@ -23,8 +23,7 @@ const getAllModelSales = async () => {
     return sale;
   };
 
-  // Registrando data da venda e gerando id para detalhe da venda
-  const createModelSales = async () => {
+   const createModelSales = async () => {
     const [{ insertId }] = await connection.execute('INSERT INTO sales (date) VALUES (NOW())');
     
     return {
@@ -33,11 +32,9 @@ const getAllModelSales = async () => {
   };
   
   const createModelSalesProducts = async ({ id, productId, quantity }) => {
-    // console.log('-------MODEL ------');
-    // console.log(id, productId, quantity);
-
-    const [{ insertId }] = await connection.execute(`INSERT INTO
-    sales_products (id, productId, quantity) VALUES (?, ?, ?)`, [id, productId, quantity]);
+    const [{ insertId }] = await connection.execute(`INSERT INTO sales_products 
+    (sale_id, product_id, quantity) VALUES (?, ?, ?)`, [id, productId, quantity]);
+    console.log(insertId);
       return {
           id: insertId,
           productId,
@@ -45,13 +42,6 @@ const getAllModelSales = async () => {
       };
   };
   
-// async function main(){
-//   await createModelSales();
-  
-// }
-
-// main();
-
  module.exports = {
       getAllModelSales,
       getByIdModelSale,

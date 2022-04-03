@@ -36,7 +36,7 @@ const getByIdControllerSale = async (req, res) => {
 const createSaleController = async (req, res) => {
   try {
     const sale = await SaleService.createServiceSale(req.body);
-    // return res.status(201).json(sale);
+    return res.status(201).json(sale);
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: ERRO_SERVIDOR });

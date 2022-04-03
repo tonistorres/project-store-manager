@@ -44,8 +44,8 @@ const deletModelByIdProduct = async (id) => {
 };
 
 
-// async function main (){
-//   getByNameModelProduct('Martelo de Thor');
+// async function main () {
+//  await createModelProduct({ name: 'Agura', quantity: 5 });
 // }
 // main();
 
