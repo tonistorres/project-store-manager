@@ -1,4 +1,9 @@
-c
+const { expect } = require("chai");
+const { describe } = require("mocha");
+const sinon = require("sinon");
+const SaleModel = require('../../../models/data.sale');
+const SaleService = require('../../../services/SaleService');
+
 describe("", () => {
   describe("FUNÇÃO:getAllServiceSales()--> Qdo RETORNAR REGISTROS do DB", () => {
     const resultDBOK = [
@@ -25,12 +30,12 @@ describe("", () => {
 
     before(() => {
       sinon
-        .stub(SaletModel,"getAllModelSales")
+        .stub(SaleModel,"getAllModelSales")
         .resolves(resultDBOK);
     });
 
     after(() => {
-        SaletModel.getAllModelSales.restore();
+      SaleModel.getAllModelSales.restore();
     });
 
     it("Retona um Array com todos objetos do DB ", async () => {
@@ -42,11 +47,11 @@ describe("", () => {
   describe("FUNÇÃO:getAllServiceSales()--> Qdo NÃO RETORNAR REGISTROS do DB", () => {
     
     before(() => {
-      sinon.stub(SaletModel, "getAllModelSales").resolves([]);
+      sinon.stub(SaleModel, "getAllModelSales").resolves([]);
     });
 
     after(() => {
-      SaletModel.getAllModelSales.restore();
+      SaleModel.getAllModelSales.restore();
     });
 
     it("É um objeto ", async () => {

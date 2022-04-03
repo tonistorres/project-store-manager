@@ -10,14 +10,11 @@ const getByIdModelProduct = async (id) => {
     return product[0];
   };
 
-
 // validar 
   const getByNameModelProduct = async (name) => {
     const [product] = await connection.execute('SELECT * FROM products WHERE name = ?', [name]);
-    console.log(product[0]);
     return product[0];
   };
-
 
 const createModelProduct = async ({ name, quantity }) => {
   const [{ insertId }] = await connection.execute(`INSERT INTO
@@ -43,11 +40,10 @@ const deletModelByIdProduct = async (id) => {
   await connection.execute('DELETE FROM products WHERE id = ?', [id]);
 };
 
-
-// async function main () {
-//  await createModelProduct({ name: 'Agura', quantity: 5 });
-// }
-// main();
+async function main() {
+ await getByNameModelProduct('Martelo de Thor');
+}
+main();
 
   module.exports = {
     getAllModelProducts,

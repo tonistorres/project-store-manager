@@ -22,21 +22,21 @@ const createServiceProduct = async (product) => {
   try {
     const { name, quantity } = product;
     
-    // criar verifação saber se o produto existe 
-    const exist = await ProductModel.getByNameModelProduct(name);
+      const exist = await ProductModel.getByNameModelProduct(name);
 
     if (exist) {
      return { erro: true, status: 409, message: 'Product already exists' };
     }
-    const created = await ProductModel.createModelProduct({ name, quantity });
+    const created = await ProductModel.createModelProduct({ name, quantity });    
     return created;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { error: 500, message: 'Erro no Servidor' };
   }
 };
 
 const updateServiceProduct = async (product) => {
+  console.log(product);
   try {
     const { id, name, quantity } = product;
 
@@ -47,10 +47,10 @@ const updateServiceProduct = async (product) => {
     }
 
     const updated = await ProductModel.updateModelProduct({ id, name, quantity });
-
+    
      return updated;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return { error: 500, message: 'Erro no Servidor' };
   }
 };
@@ -65,7 +65,7 @@ const deleteByIdServiceProduct = async (requisicao) => {
       status: 204,      
     };
   }
-  console.log('pasei direto');
+  
   return {
     erro: true,
     status: 404,
