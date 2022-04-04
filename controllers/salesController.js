@@ -11,7 +11,7 @@ const getAllControllerSales = async (_req, res) => {
       }
       return res.status(200).json(sales);
     } catch (error) {
-      console.log(error);
+     // console.log(error);
       return res
         .status(500)
         .json({ message: ERRO_SERVIDOR });
@@ -26,7 +26,7 @@ const getByIdControllerSale = async (req, res) => {
       }
       return res.status(200).json(sales);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res
         .status(500)
         .json({ message: ERRO_SERVIDOR });
