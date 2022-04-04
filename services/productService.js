@@ -30,13 +30,11 @@ const createServiceProduct = async (product) => {
     const created = await ProductModel.createModelProduct({ name, quantity });    
     return created;
   } catch (error) {
-    // console.log(error);
     return { error: 500, message: 'Erro no Servidor' };
   }
 };
 
 const updateServiceProduct = async (product) => {
-  console.log(product);
   try {
     const { id, name, quantity } = product;
 
@@ -50,8 +48,7 @@ const updateServiceProduct = async (product) => {
     
      return updated;
   } catch (error) {
-    // console.log(error);
-    return { error: 500, message: 'Erro no Servidor' };
+      return { error: 500, message: 'Erro no Servidor' };
   }
 };
 
