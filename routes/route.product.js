@@ -4,7 +4,7 @@ const {
    cadProdCampNameMaior5,
    cadProdCampQutExist,
    cadProdCampQutMaiorZero,
-   updateQuntMaiorZero,
+   // updateQuntMaiorZero,
 } = require('../middlewares/middlewareValidaPS');
 const ProductController = require('../controllers/productsController');
 
@@ -25,8 +25,8 @@ router
    .put('/:id',
    cadProdCampNameMaior5,
    cadProdCampQutExist,
-    updateQuntMaiorZero,
-    ProductController.updateProductController)
+   cadProdCampQutMaiorZero,
+   ProductController.updateProductController)
 
    .delete('/:id', ProductController.getDeleteIdControllerProduct);
 

@@ -22,11 +22,13 @@ const getByIdServiceSales = async (requisicao) => {
 const createServiceSale = async (reqArrayObj) => {
   try {
 const idvenda = await SaleModel.createModelSales();
-reqArrayObj.forEach(async (item) => {
+console.log(idvenda);
+console.log(reqArrayObj);
+await Promise.all(reqArrayObj.map(async (item) => {
 await SaleModel.createModelSalesProducts(
   { id: idvenda.id, productId: item.productId, quantity: item.quantity },
   );
-  });
+  }));
  
     const retornaObjetoFormato = {
       id: idvenda.id,
@@ -40,8 +42,28 @@ await SaleModel.createModelSalesProducts(
   }
 };
 
+const updateServiceSales = async (id, { productId, quantity }) => {
+  try {
+        // const exist = await SaleModel.getByIdModelSale(id);
+
+    // if (!exist) {
+    //   return { erro: true, status: 404, message: 'Product not found' };
+    // }
+
+    const updated = await SaleModel.updateModelSales(
+      { qtde: quantity, idvenda: id, idProduct: productId },
+      );
+    
+     return updated;
+  } catch (error) {
+    // console.log(error);
+    return { error: 500, message: 'Erro no Servidor' };
+  }
+};
+
 module.exports = {
     getAllServiceSales,
     getByIdServiceSales,
     createServiceSale,
+    updateServiceSales,
 };

@@ -43,8 +43,27 @@ const createSaleController = async (req, res) => {
   }
 };
 
+const updateSaleController = async (req, res) => {
+  try {
+     const { id } = req.params;
+
+     if (id) {
+      const recebeCorpoArray = req.body;
+      const sale = await SaleService.updateServiceSales(id, ...recebeCorpoArray);
+if (sale.erro) {
+      return res.status(sale.status).json({ message: sale.message });  
+    }
+    return res.status(200).json(sale);
+     }
+  } catch (error) {
+   // console.log(error);
+    return res.status(500).json({ message: ERRO_SERVIDOR });
+  }
+};
+
   module.exports = {
     getAllControllerSales,
     getByIdControllerSale,
     createSaleController,
+    updateSaleController,
   };

@@ -1,5 +1,6 @@
 const frisby = require("frisby");
 require("dotenv").config();
+// jest.setTimeout(12000);
 
 describe("03-validations", () => {
   const url = `http://localhost:${process.env.PORT}`;

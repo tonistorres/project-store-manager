@@ -37,17 +37,37 @@ const getAllModelSales = async () => {
   const createModelSalesProducts = async ({ id, productId, quantity }) => {
     const [{ insertId }] = await connection.execute(`INSERT INTO StoreManager.sales_products 
     (sale_id, product_id, quantity) VALUES (?, ?, ?)`, [id, productId, quantity]);
-    console.log(insertId);
+    
       return {
           id: insertId,
           productId,
           quantity,  
       };
   };
+
+  async function updateModelSales({ qtde, idvenda, idProduct }) {
+     await connection.execute(
+      `UPDATE StoreManager.sales_products 
+      SET quantity = ? WHERE sale_id = ? AND product_id = ?`,
+      [qtde, idvenda, idProduct],
+    );
+  
+    return {
+      saleId: idvenda,
+      itemUpdated: [
+        {
+          productId: idProduct,
+          quantity: qtde,
+        },
+      ],
+    };
+  }
   
  module.exports = {
       getAllModelSales,
       getByIdModelSale,
       createModelSales,
       createModelSalesProducts,
+      updateModelSales,
+
   };

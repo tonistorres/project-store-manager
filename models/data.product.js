@@ -44,11 +44,6 @@ const deletModelByIdProduct = async (id) => {
   await connection.execute('DELETE FROM StoreManager.products WHERE id = ?', [id]);
 };
 
-async function main() {
- await getByNameModelProduct('Martelo de Thor');
-}
-main();
-
   module.exports = {
     getAllModelProducts,
     getByIdModelProduct,
