@@ -50,6 +50,7 @@ describe("03-validations", () => {
 				});
 		});
 
+		// validado
 		it("quando cadastrar um produto será validado que o campo quantity é um número inteiro maior que zero", async  () => {
 			await frisby
 				.post(`${url}/products`, {
@@ -66,7 +67,7 @@ describe("03-validations", () => {
 			});
 		});
 
-		// atualizações dos produtos
+		// validado
 		it("quando atualizar um produto será validado que o campo name possui 5 ou mais caracteres", async  () => {
 			await frisby
 				.put(`${url}/products/1`, {
@@ -82,6 +83,7 @@ describe("03-validations", () => {
 				}); 
 		});
 
+		// validado
 		it("quando atualizar um produto será validado que o campo quantity está presente no body", async () => {
 			await frisby
 				.put(`${url}/products/1`, {
@@ -96,6 +98,7 @@ describe("03-validations", () => {
 				});
 		});
 
+		// validado
 		it("quando atualizar um produto será validado que o quantity é um número inteiro maior que zero", async () => {
 			await frisby
 				.put(`${url}/products/1`, {

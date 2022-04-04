@@ -19,7 +19,8 @@ const getAllModelSales = async () => {
     ON s.id = sp.sale_id
     WHERE sp.sale_id = ?
     ORDER BY s.id, sp.product_id
-    `, [id]);    
+    `, [id]);   
+    
     return sale;
   };
 
