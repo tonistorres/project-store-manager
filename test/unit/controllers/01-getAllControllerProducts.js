@@ -80,4 +80,28 @@ describe("<--- CAMADA CONTROLLER --->", () => {
   
 
 
+
+  describe(`FUNÇÃO:getAllControllerProducts()--> ERRO SERVIDOR`, () => {
+    before(() => {
+      response.status = sinon.stub().returns(response);
+      response.json = sinon.stub().returns({ message: 'Erro no Servidor' });
+      sinon.stub(ProductController, "getAllControllerProducts").resolves({ message: 'Erro no Servidor' });
+    });
+  
+    after(() => {
+      ProductController.getAllControllerProducts.restore();
+    });
+  
+    it("Testa se Retorna um  Objeto ", async () => {
+      const product = await ProductController.getAllControllerProducts(
+        request,
+        response
+      );
+      console.log(product); 
+      expect(product).to.be.an("object");
+    });
+  });
+  
+
+
 });

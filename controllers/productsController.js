@@ -10,7 +10,7 @@ const getAllControllerProducts = async (_req, res) => {
       }
       return res.status(200).json(products);
     } catch (error) {
-      console.log(error);
+     // console.log(error);
       return res
         .status(500)
         .json({ message: ERRO_SERVIDOR });
@@ -19,13 +19,13 @@ const getAllControllerProducts = async (_req, res) => {
   
 const getByIdControllerProduct = async (req, res) => {
     try {
-      const user = await ProductService.getByIdServiceProducts(req.params);
-      if (user.message) {
-        return res.status(404).json({ message: user.message });
+      const product = await ProductService.getByIdServiceProducts(req.params);
+      if (product.message) {
+        return res.status(404).json({ message: product.message });
       }
-      return res.status(200).json(user);
+      return res.status(200).json(product);
     } catch (error) {
-      console.log(error);
+     // console.log(error);
       return res
         .status(500)
         .json({ message: ERRO_SERVIDOR });
@@ -40,7 +40,7 @@ const createProductController = async (req, res) => {
     }
     return res.status(201).json(product);
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     return res.status(500).json({ message: ERRO_SERVIDOR });
   }
 };
@@ -55,7 +55,7 @@ const updateProductController = async (req, res) => {
     }
     return res.status(200).json(product);
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     return res.status(500).json({ message: ERRO_SERVIDOR });
   }
 };
@@ -68,7 +68,7 @@ const getDeleteIdControllerProduct = async (req, res) => {
     }
     return res.status(product.status).json({ message: product.message });
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     return res
       .status(500)
       .json({ message: ERRO_SERVIDOR });

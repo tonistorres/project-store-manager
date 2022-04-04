@@ -12,8 +12,8 @@ const getByIdServiceProducts = async (requisicao) => {
   const { id } = requisicao;
   const verificaExiste = await ProductModel.getByIdModelProduct(id);
   if (verificaExiste) {
-    const user = await ProductModel.getByIdModelProduct(id);
-     return user;   
+    const product = await ProductModel.getByIdModelProduct(id);
+     return product;   
   }
    return { message: 'Product not found' };      
 };
