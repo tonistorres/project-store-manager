@@ -1,13 +1,13 @@
 const express = require('express');
 const SaleController = require('../controllers/salesController');
- const { validaCadastroVenda } = require('../middlewares/meddlewareCadSale');
+ const { validaCadastroVenda, validaQuantity } = require('../middlewares/middlewareSales');
 
 const router = express.Router();
 
 router
    .get('/', SaleController.getAllControllerSales)
-   .post('/', validaCadastroVenda, SaleController.createSaleController)
+   .post('/', validaCadastroVenda, validaQuantity, SaleController.createSaleController)
    .get('/:id', SaleController.getByIdControllerSale)
-   .put('/:id', validaCadastroVenda, SaleController.updateSaleController);
+   .put('/:id', validaCadastroVenda, validaQuantity, SaleController.updateSaleController);
 
 module.exports = router;

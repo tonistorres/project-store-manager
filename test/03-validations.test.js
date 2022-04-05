@@ -132,6 +132,7 @@ describe("03-validations", () => {
 				});
 		});
 
+		
 		it("quando cadastrar uma venda será validado que o campo quantity está presente no body", async () => {
 			await frisby
 				.post(`${url}/sales/`, [
